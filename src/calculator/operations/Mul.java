@@ -1,9 +1,8 @@
 package calculator.operations;
 
-import calculator.IOperable;
 import calculator.Operand;
 
-public class Mul implements IOperation, IOperable {
+public class Mul implements IOperation {
 
     @Override
     public Operand execute(Operand a, Operand b) {
