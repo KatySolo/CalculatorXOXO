@@ -24,7 +24,7 @@ public class Calculator {
                 new BracketsReader()
         );
     }
-    public Calculator(Lexer lexer){
+    public Calculator(Lexer lexer) {
         this.lexer = lexer;
     }
 }

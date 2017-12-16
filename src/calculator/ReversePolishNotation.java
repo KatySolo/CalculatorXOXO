@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class ReversePolishNotation {
-    protected static ArrayList<IOperable> transformToRPN(ArrayList<Token> tokens){
+    public static ArrayList<IOperable> transformToRPN(Token[] tokens){
         Stack<Token> stack = new Stack<>();
         ArrayList<Token> result = new ArrayList<>();
-        for (int i = 0; i < tokens.size(); i++){
-            Token token = tokens.get(i);
+        for (int i = 0; i < tokens.length; i++){
+            Token token = tokens[i];
             boolean flag = false;
             if (!token.getType().equals("bao") && !token.getType().equals("bracket"))
                 result.add(token);
