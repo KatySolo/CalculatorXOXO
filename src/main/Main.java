@@ -1,20 +1,5 @@
 package main;
 
-<<<<<<< HEAD
-import calculator.Calculator;
-
-
-public class Main {
-    public static void main(String[] args) {
-        try {
-            Calculator calc = new Calculator();
-            calc.Calculate("(1+2i+2+4i)+2-4i");
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-        }
-=======
 import calculator.IOperable;
 import calculator.ReversePolishNotation;
 import lexer.Lexer;
@@ -37,7 +22,6 @@ public class Main {
 
         for (IOperable operable : rpn)
             System.out.println(operable);
->>>>>>> master
     }
 }
 
