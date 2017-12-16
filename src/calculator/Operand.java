@@ -1,11 +1,9 @@
 package calculator;
 
-import readers.Token;
-import vectors.Vector;
-import vectors.Vector2d;
-import vectors.Vector3d;
-import vectors.VectorNd;
+import complex.ComplexNumber;
+import token.Token;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -18,6 +16,16 @@ public class Operand implements ICalculatable{
 
     public Operand(Token a) {
         OperandContent.put(a.getType(), a.getValue());
+=======
+import java.util.HashMap;
+
+public class Operand implements IOperable {
+    private HashMap<String, Object> operand = new HashMap<>();
+
+    public Operand(Token token) {
+        if (token != null)
+            this.put(token);
+>>>>>>> master
     }
 //        if (a.getType().equals("vector")) {
 //            String coords = a.getText();
@@ -44,6 +52,7 @@ public class Operand implements ICalculatable{
 //            number = new ComplexNumber(a.getText());
 //        }
 
+<<<<<<< HEAD
     public String GetType() {
 //        if (vector != null && number != null) {
 //            return "Compound";
@@ -75,6 +84,16 @@ public class Operand implements ICalculatable{
 //            return vector.toString();
 //        }
         return null;
+=======
+    private void put(Token token){
+        if (token.getType().startsWith("vector"))
+            operand.put(token.getType(), token.getValue());
+        else if (token.getType().equals("complex")){
+            ComplexNumber complex = (ComplexNumber) token.getValue();
+            if (complex.real() != 0.0) operand.put("real", complex.real());
+            if (complex.imaginary() != 0.0) operand.put("imaginary", complex.imaginary());
+        }
+>>>>>>> master
     }
 }
 

@@ -1,35 +1,30 @@
 package calculator;
 
-import calculator.operations.Add;
-import calculator.operations.Mul;
-import calculator.operations.Sub;
 import lexer.Lexer;
-import readers.*;
+import reader.*;
+import token.Token;
 
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Stack;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class Calculator {
-
-    private Lexer lexer = new Lexer();
-    private OPN opn = new OPN();
-    private Add add_oper = new Add();
-    private Mul mul_oper = new Mul();
-    private Sub sub_oper = new Sub();
+    private Lexer lexer;
 
     public Calculator(){
-
-        lexer.register(new ComplexNumberReader());
-        lexer.register(new VectorReader());
-        lexer.register(new OperationReader());
-        lexer.register(new WhitespaceReader());
-        lexer.register(new DoubleReader());
-        lexer.register(new IntReader());
-        lexer.register(new BracketReader());
-
-
+        lexer = new Lexer();
+        lexer.register(
+                new BinaryArithmeticOperatorReader(),
+                new ComplexReader(),
+                new VectorReader(),
+                new IntReader(),
+                new DoubleReader(),
+                new BracketsReader()
+        );
     }
+<<<<<<< HEAD
 
 
     public String Calculate(String input) throws Exception
@@ -114,3 +109,9 @@ public class Calculator {
 
 
 }
+=======
+    public Calculator(Lexer lexer) {
+        this.lexer = lexer;
+    }
+}
+>>>>>>> master

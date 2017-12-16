@@ -3,9 +3,8 @@ package calculator.operations;
 import calculator.IOperable;
 import calculator.Operand;
 
-public class Mul implements IOperation, IOperable {
+public class Pow implements IOperation, IOperable {@Override
 
-    @Override
     public Operand execute(Operand a, Operand b) {
         return null;
     }
