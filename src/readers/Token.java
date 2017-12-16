@@ -1,6 +1,5 @@
 package readers;
 
-import org.junit.Test;
 import vectors.Vector;
 import vectors.VectorNd;
 

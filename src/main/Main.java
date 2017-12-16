@@ -1,8 +1,18 @@
 package main;
 
+import calculator.Calculator;
+
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("World is not so lovely, as we are");
+        try {
+            Calculator calc = new Calculator();
+            calc.Calculate("(1+2i+2+4i)+2-4i");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 }
 

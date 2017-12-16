@@ -1,6 +1,6 @@
 package calculator;
 
-public class Operator {
+public class Operator implements ICalculatable{
 
     private Character operator;
 

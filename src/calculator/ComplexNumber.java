@@ -14,7 +14,7 @@ public class ComplexNumber {
         if (!number.contains("i"))
         {
             Real = Double.parseDouble(number);
-            sign = '+';
+//            sign = '+';
             Imaginary = 0;
 
         } else {

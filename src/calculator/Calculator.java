@@ -43,7 +43,8 @@ public class Calculator {
         ArrayList<Token> output = new ArrayList<>();
         try {
             output = opn.GetExpression(tokens); //Преобразовываем выражение в постфиксную запись
-            return Counting(output).toString();
+            ArrayList<ICalculatable> output_wrapped = wrappingTokens(output);
+            return Counting(output_wrapped).toString();
         }
         catch (Exception e)
         {
@@ -54,45 +55,60 @@ public class Calculator {
 
     }
 
-    private Operand Counting(ArrayList<Token> input) throws Exception //TODO think about performing operations
+    private ArrayList<ICalculatable> wrappingTokens(ArrayList<Token> input)
     {
-        Operand result = null; //Результат
-        Stack<Operand> temp = new Stack<>(); //Временный стек для решения
-
+        ArrayList<ICalculatable> result = new ArrayList<>();
         for (Token token : input)
         {
-            String type = token.getType();
-            if (!type.equals("operation") && !type.endsWith("bracket")) {
-                temp.push(new Operand(token));
-            } else if (type.equals("operation")) //Если символ - оператор //TODO check the availability of operation
+            if (Objects.equals(token.getType(), "operation")) {
+                result.add(new Operator(token.getText()));
+            } else
             {
-                Operand a = temp.pop();
-                Operand b = temp.pop();
-
-                switch (token.getText()) //todo make methods
-                {
-                    case "+":
-                        result = add_oper.execute(a,b);
-                        break;
-                    case "-":
-                        result = sub_oper.execute(a,b);
-                        break;
-                    case "*":
-                        result = mul_oper.execute(a,b);
-                        break;
-//                    case "^":
-//                        result = a.Pow(b);
-//                        break;
-
-                }
-                temp.push(result);//Результат вычисления записываем обратно в стек
-//                }
-//                else {
-//                    throw new Exception("Can not perform the action");
-//                }
+                result.add(new Operand(token));
             }
         }
-        return temp.peek(); //Забираем результат всех вычислений из стека и возвращаем его
+        return result;
+    }
+    private Operand Counting(ArrayList<ICalculatable> input) throws Exception //TODO think about performing operations
+    {
+//        Operand result = null; //Результат
+//        Stack<Operand> temp = new Stack<>(); //Временный стек для решения
+//
+//        for (Token token : input)
+//        {
+//            String type = token.getType();
+//            if (!type.equals("operation") && !type.endsWith("bracket")) {
+//                temp.push(new Operand(token));
+//            } else if (type.equals("operation")) //Если символ - оператор //TODO check the availability of operation
+//            {
+//                Operand a = temp.pop();
+//                Operand b = temp.pop();
+//
+//                switch (token.getText()) //todo make methods
+//                {
+//                    case "+":
+//                        result = add_oper.execute(a,b);
+//                        break;
+//                    case "-":
+//                        result = sub_oper.execute(a,b);
+//                        break;
+//                    case "*":
+//                        result = mul_oper.execute(a,b);
+//                        break;
+////                    case "^":
+////                        result = a.Pow(b);
+////                        break;
+//
+//                }
+//                temp.push(result);//Результат вычисления записываем обратно в стек
+////                }
+////                else {
+////                    throw new Exception("Can not perform the action");
+////                }
+//            }
+//        }
+//        return temp.peek(); //Забираем результат всех вычислений из стека и возвращаем его
+        return null;
     }
 
 
